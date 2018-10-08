@@ -6,6 +6,9 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
 
+const settings = {timestampsInSnapshots: true};
+admin.firestore().settings(settings);
+
 var db = admin.firestore();
 
 db.collection('canciones').get()
