@@ -27,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/rafalfaro18/musica-nacional-bot/issues"
   },
-  "homepage": "https://github.com/rafalfaro18/musica-nacional-bot#readme"
+  "homepage": "https://github.com/rafalfaro18/musica-nacional-bot#readme",
+  "dependencies": {
+    "firebase-admin": "^6.0.0"
+  }
 }
