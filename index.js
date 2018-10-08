@@ -29,7 +29,10 @@ db.collection('canciones').get()
     return songs[randomId];
   })
   .then((song) => {
-    console.log(song);
+    if('artista' in song.data){
+      const artist = song.data['artista']._referencePath.segments;
+      console.log(artist);
+    }
   })
   .catch((err) => {
     console.log('Error getting documents', err);
