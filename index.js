@@ -6,7 +6,9 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
 
-const settings = {timestampsInSnapshots: true};
+const settings = {
+  timestampsInSnapshots: true
+};
 admin.firestore().settings(settings);
 
 var db = admin.firestore();
@@ -29,9 +31,13 @@ db.collection('canciones').get()
     return songs[randomId];
   })
   .then((song) => {
-    if('artista' in song.data){
+    if ('artista' in song.data) {
       const artist = song.data['artista']._referencePath.segments;
       console.log(artist);
+    }
+    if ('url' in song.data) {
+      const url = song.data.url;
+      console.log(url);
     }
   })
   .catch((err) => {
