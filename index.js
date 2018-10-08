@@ -35,6 +35,10 @@ db.collection('canciones').get()
       const artist = song.data['artista']._referencePath.segments;
       console.log(artist);
     }
+    if ('nombre' in song.data) {
+      const name = song.data.nombre;
+      console.log(name);
+    }
     if ('url' in song.data) {
       const url = song.data.url;
       console.log(url);
