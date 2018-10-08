@@ -1,0 +1,31 @@
+{
+  "name": "musica-nacional-bot",
+  "version": "1.0.0",
+  "description": "recomendaciones de musica nacional de costa rica",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafalfaro18/musica-nacional-bot.git"
+  },
+  "keywords": [
+    "music",
+    "musica",
+    "nacional",
+    "costa",
+    "rica",
+    "costarica",
+    "costa",
+    "rica",
+    "recomendaciones",
+    "suggestions"
+  ],
+  "author": "Rafael Alfaro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rafalfaro18/musica-nacional-bot/issues"
+  },
+  "homepage": "https://github.com/rafalfaro18/musica-nacional-bot#readme"
+}
