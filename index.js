@@ -20,7 +20,7 @@ db.collection('canciones').get()
       const data = doc.data();
       const id = doc.id;
       songs[id] = {
-        nombre: data.nombre
+        data: data
       };
       song_ids.push(doc.id);
     });
