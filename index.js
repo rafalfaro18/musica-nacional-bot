@@ -14,7 +14,8 @@ var db = admin.firestore();
 db.collection('canciones').get()
   .then((snapshot) => {
     snapshot.forEach((doc) => {
-      console.log(doc.id, '=>', doc.data());
+      const data = doc.data();
+      console.log(doc.id, '=>', data);
     });
   })
   .catch((err) => {
