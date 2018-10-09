@@ -71,7 +71,7 @@ db.collection('canciones').get()
       console.log(tweet);
     })
     .catch((err) => {
-      console.log('Error getting documents', err);
+      console.log('Error getting tweet', err);
     });
   })
   .catch((err) => {
