@@ -67,7 +67,8 @@ db.collection('canciones').get()
   })
   .then((song_url) => {
     client.get('statuses/user_timeline', {
-      count : 1
+      count : 1,
+      exclude_replies: true
     })
     .then( (result) => {
       last_tweet_date = result[0]['created_at'];
