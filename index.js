@@ -66,12 +66,26 @@ db.collection('canciones').get()
     return song_url;
   })
   .then((song_url) => {
-    client.post('statuses/update', {status: `Recomendación Diaria 🎶 🇨🇷 ${song_url}`})
-    .then(function (tweet) {
-      console.log(tweet);
+    client.get('statuses/user_timeline', {
+      count : 1
+    })
+    .then( (result) => {
+      last_tweet_date = result[0]['created_at'];
+      var tTime=new Date(last_tweet_date);
+      var cTime=new Date();
+      var sinceDays=Math.round((cTime-tTime)/(1000*60*60*24));
+      if(sinceDays >= 1){
+        client.post('statuses/update', {status: `Recomendación Diaria 🎶 🇨🇷 ${song_url}`})
+        .then(function (tweet) {
+          console.log(tweet);
+        })
+        .catch((err) => {
+          console.log('Error getting posted tweet', err);
+        });
+      }
     })
     .catch((err) => {
-      console.log('Error getting tweet', err);
+      console.log('Error getting last tweet', err);
     });
   })
   .catch((err) => {
