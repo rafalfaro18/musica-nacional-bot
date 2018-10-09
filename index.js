@@ -39,18 +39,31 @@ db.collection('canciones').get()
     return songs[randomId];
   })
   .then((song) => {
+    let artist = '';
+    let name = '';
+    let urls = [];
+    let spotify_url = '';
+    let bandcamp_url = '';
     if ('artista' in song.data) {
-      const artist = song.data['artista']._referencePath.segments;
-      console.log(artist);
+      artist = song.data['artista']._referencePath.segments;
     }
     if ('nombre' in song.data) {
-      const name = song.data.nombre;
-      console.log(name);
+      name = song.data.nombre;
     }
     if ('url' in song.data) {
-      const url = song.data.url;
-      console.log(url);
+      urls = song.data.url;
     }
+    urls.forEach((link) =>{
+      if(link.match(/spotify/)){
+        spotify_url = link
+      } else if(link.match(/bandcamp/)){
+        bandcamp_url = link
+      }
+    });
+    console.log(spotify_url, bandcamp_url);
+  })
+  .then((song) => {
+
   })
   .catch((err) => {
     console.log('Error getting documents', err);
