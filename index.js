@@ -1,3 +1,4 @@
+require('dotenv').config()
 const admin = require('firebase-admin');
 var Twitter = require('twitter');
 
@@ -44,6 +45,7 @@ db.collection('canciones').get()
     let urls = [];
     let spotify_url = '';
     let bandcamp_url = '';
+    let song_url = '';
     if ('artista' in song.data) {
       artist = song.data['artista']._referencePath.segments;
     }
@@ -60,10 +62,17 @@ db.collection('canciones').get()
         bandcamp_url = link
       }
     });
-    console.log(spotify_url, bandcamp_url);
+    song_url = spotify_url !== '' ? spotify_url : bandcamp_url;
+    return song_url;
   })
-  .then((song) => {
-
+  .then((song_url) => {
+    client.post('statuses/update', {status: `Recomendación Diaria 🎶 🇨🇷 ${song_url}`})
+    .then(function (tweet) {
+      console.log(tweet);
+    })
+    .catch((err) => {
+      console.log('Error getting documents', err);
+    });
   })
   .catch((err) => {
     console.log('Error getting documents', err);
