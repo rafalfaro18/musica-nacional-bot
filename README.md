@@ -9,12 +9,12 @@ Bot de recomendaciones de música de Costa Rica
 - Cada documento de la colección 'canciones' como mínimo debe tener la siguiente estructura:
 ```json
 {
-  someID : {
-    nombre : 'someName',
-    url : [
-      'https://avenegra.bandcamp.com/track/ave-negra' ,
-      'https://open.spotify.com/track/0iN5jZY8G5viGqYVwolw86?si=IoasAjVSSsShlHbt6Z78-Q'
-    ]
-  }
+	"someID": {
+		"nombre": "someName",
+		"url": [
+			"https://avenegra.bandcamp.com/track/ave-negra",
+			"https://open.spotify.com/track/0iN5jZY8G5viGqYVwolw86?si=IoasAjVSSsShlHbt6Z78-Q"
+		]
+	}
 }
 ```
