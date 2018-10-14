@@ -73,7 +73,7 @@ db.collection('canciones').get()
     .then( (result) => {
       last_tweet_date = result[0]['created_at'];
       let last_tweet_text = result[0]['text'];
-      is_last_tweet_recomendation =  last_tweet_text.match(/^Recomendación Diaria/).length > 0 ? true : false;
+      is_last_tweet_recomendation =  last_tweet_text.match(/^Recomendación Diaria/) ? true : false;
       var tTime=new Date(last_tweet_date);
       var cTime=new Date();
       var sinceDays=Math.round((cTime-tTime)/(1000*60*60*24));

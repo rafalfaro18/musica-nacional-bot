@@ -62,3 +62,6 @@ typings/
 
 #firestore cloud server
 key.json
+
+#.vscode
+.vscode
