@@ -63,14 +63,14 @@ db.collection('canciones').get()
       }
     });
     song_url = spotify_url !== '' ? spotify_url : bandcamp_url;
-    return song_url;
+    return {song_url, artist};
   })
-  .then((song_url) => {
+  .then((data) => {
     client.get('statuses/user_timeline', {
       count : 1,
       exclude_replies: true
     })
-    .then( (result) => {
+    .then( async (result, artist) => {
       last_tweet_date = result[0]['created_at'];
       let last_tweet_text = result[0]['text'];
       is_last_tweet_recomendation =  last_tweet_text.match(/^Recomendación Diaria/) ? true : false;
@@ -78,7 +78,24 @@ db.collection('canciones').get()
       var cTime=new Date();
       var sinceDays=Math.round((cTime-tTime)/(1000*60*60*24));
       if ( (is_last_tweet_recomendation && sinceDays >= 1) || (!is_last_tweet_recomendation && (cTime.getHours() >= 7 && cTime.getHours <= 9)) ) {
-        client.post('statuses/update', {status: `Recomendación Diaria 🎶 🇨🇷 ${song_url}`})
+        var song_url = data['song_url'];
+        var artist = data['artist'];
+        var artist_twitter = '';
+        if(artist){
+          var docRef = db.collection(artist[0]).doc(artist[1])
+          artist_twitter = await docRef.get().then((doc) => {
+            if (doc.exists) {
+                let artistdata = doc.data();
+                return artistdata.twitter_handle;
+            } else {
+                return '';
+            }
+          }).catch((error) => {
+              console.log("Error getting artist:", error);
+          });
+        }
+        let tag = artist_twitter ? `@${artist_twitter}` : '';
+        client.post('statuses/update', {status: `Recomendación Diaria 🎶 🇨🇷 ${song_url} de ${tag}`})
         .then(function (tweet) {
           console.log(tweet);
         })
