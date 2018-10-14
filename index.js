@@ -72,10 +72,12 @@ db.collection('canciones').get()
     })
     .then( (result) => {
       last_tweet_date = result[0]['created_at'];
+      let last_tweet_text = result[0]['text'];
+      is_last_tweet_recomendation =  last_tweet_text.match(/^Recomendación Diaria/).length > 0 ? true : false;
       var tTime=new Date(last_tweet_date);
       var cTime=new Date();
       var sinceDays=Math.round((cTime-tTime)/(1000*60*60*24));
-      if(sinceDays >= 1){
+      if ( (is_last_tweet_recomendation && sinceDays >= 1) || (!is_last_tweet_recomendation && (cTime.getHours() >= 7 && cTime.getHours <= 9)) ) {
         client.post('statuses/update', {status: `Recomendación Diaria 🎶 🇨🇷 ${song_url}`})
         .then(function (tweet) {
           console.log(tweet);
