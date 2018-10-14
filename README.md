@@ -3,8 +3,8 @@ Bot de recomendaciones de música de Costa Rica
 
 ## Requerimientos
 
-- Put your Twitter Developer App credentials in an .env file like [env.example](env.example)
-- Put your firestore cloud server .json credentials in a file called key.json. The content is like [key.json.example](key.json.example)
+- Poner los credenciales de Twitter Developer App en un archivo .env así [env.example](env.example)
+- Poner los credenciales .json de firestore cloud server en un archivo llamado 'key.json'. Su contenido es como este [key.json.example](key.json.example)
 - Base de datos en firebase cloud con una colección (no vacia) llamada 'canciones'.
 - Cada documento de la colección 'canciones' como mínimo debe tener un ID, un Nombre y un array de urls con una url de la cancion en spotify y(o) una url de la cancion en bandcamp como en la siguiente estructura:
 ```json
