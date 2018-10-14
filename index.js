@@ -77,7 +77,7 @@ db.collection('canciones').get()
       var tTime=new Date(last_tweet_date);
       var cTime=new Date();
       var sinceDays=Math.round((cTime-tTime)/(1000*60*60*24));
-      if ( (is_last_tweet_recomendation && sinceDays >= 1) || (!is_last_tweet_recomendation && (cTime.getHours() >= 16 && cTime.getHours() <= 18)) ) {
+      if ( (is_last_tweet_recomendation && sinceDays >= 1) || (!is_last_tweet_recomendation && (cTime.getHours() >= 7 && cTime.getHours() <= 9)) ) {
         var song_url = data['song_url'];
         var artist = data['artist'];
         var artist_twitter = '';
