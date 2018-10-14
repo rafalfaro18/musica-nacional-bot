@@ -32,3 +32,7 @@ Bot de recomendaciones de música de Costa Rica
 - El bot solo publica el tweet si cumple lo siguiente:
   - El ultimo tweet publicado por la cuenta asociada a los credenciales en el archivo .env no comienza con 'Recomendación Diaria' y la hora en que se ejecutó el bot está entre las 7am y 9am.
   - El ultimo tweet publicado por la cuenta asociada a los credenciales en el archivo .env comienza con 'Recomendación Diaria' y ya ha pasado un día o más.
+- Para ponerlo a correr automaticamente a las 8am todos los dias se puede utilizar un crontab que comience con '0 8 * * *':
+```bash
+0 8 * * * node /ruta_completa/index.js < /dev/null &
+```
