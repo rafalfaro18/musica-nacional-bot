@@ -18,3 +18,12 @@ Bot de recomendaciones de música de Costa Rica
 	}
 }
 ```
+- Cada canción puede tener un campo 'artista' de tipo referencia a un documento de una colección llamada 'artistas'.
+- Cada documento de la colección 'artistas' debe tener como mínimo un ID y opcionalmente un campo 'twitter_handle' con el nombre de usuario de twitter sin la @:
+```json
+{
+	"unID": {
+    "twitter_handle": "unUsuarioDeTwitter"
+  }
+}
+```
