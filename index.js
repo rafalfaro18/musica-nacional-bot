@@ -94,8 +94,8 @@ db.collection('canciones').get()
               console.log("Error getting artist:", error);
           });
         }
-        let tag = artist_twitter ? `@${artist_twitter}` : '';
-        client.post('statuses/update', {status: `Recomendación Diaria 🎶 🇨🇷 ${song_url} de ${tag}`})
+        let tag = artist_twitter ? `de @${artist_twitter}` : '';
+        client.post('statuses/update', {status: `Recomendación Diaria 🎶 🇨🇷 ${song_url} ${tag}`})
         .then(function (tweet) {
           console.log(tweet);
         })
